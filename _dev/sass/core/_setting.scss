@@ -1,0 +1,88 @@
+@charset "utf-8";
+
+//----------------------------------------------------------------
+//
+//  ブレークポイント設定
+//
+//----------------------------------------------------------------
+$lyt-cont:960px;
+$bp-pc:$lyt-cont;
+$bp-tab:720px;
+$bp-sp:550px;
+
+
+//----------------------------------------------------------------
+//
+//  Mixin
+//
+//----------------------------------------------------------------
+//----------------------------------------------------------------
+// メディアクエリー記述
+//----------------------------------------------------------------
+@mixin breakpoint($point){
+
+  @if $point == full{
+    @media screen and (max-width:$bp-pc + 40px){
+      @content;
+    }
+  }
+
+  @else if $point == pc{
+    @media screen and (max-width:$bp-pc - 1px){
+      @content;
+    }
+  }
+
+  @else if $point == tab{
+    @media screen and (max-width:$bp-tab){
+      @content;
+    }
+  }
+
+  @else if $point == sp{
+    @media screen and (max-width:$bp-sp){
+      @content;
+    }
+  }
+
+  @else{
+    @media screen and (max-width:$point){
+      @content;
+    }
+  }
+}
+
+
+//----------------------------------------------------------------
+// clearfix
+//----------------------------------------------------------------
+@mixin clearfix{
+  &:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+//----------------------------------------------------------------
+// default
+//----------------------------------------------------------------
+body{
+  font-family: 游ゴシック体, "Yu Gothic", YuGothic, sans-serif;
+  line-height: 1.75;
+  font-size: 100%;
+
+  p,menu,ul,ol,dl,table{
+    margin: 0 0 20px;
+    line-height: 1.45;
+  }
+
+  ul,li{
+    padding: 0;
+    list-style-type: none;
+  }
+
+  img{
+    vertical-align: top;
+  }
+}
